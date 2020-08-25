@@ -3,7 +3,6 @@ package pl.asiewiera.geolocalizationserver.entities;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.sql.Timestamp;
 
 @Entity
@@ -13,6 +12,9 @@ public class Localization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "device_id")
+    private Long deviceId;
 
     private String latitude;
 
@@ -52,5 +54,14 @@ public class Localization {
 
     public void setDateCreated(Timestamp dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+
+    public Long getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Long deviceId) {
+        this.deviceId = deviceId;
     }
 }

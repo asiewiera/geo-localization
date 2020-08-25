@@ -3,6 +3,7 @@ package pl.asiewiera.geolocalizationserver.controllers;
 import dtos.LocalizationDto;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.asiewiera.geolocalizationserver.services.LocalizationService;
 
@@ -12,13 +13,13 @@ import java.util.List;
 @RequestMapping(value = "/api/locals")
 public class LocalizationController {
 
-    private LocalizationService localizationService;
+    private final LocalizationService localizationService;
 
     @Autowired
     public LocalizationController(LocalizationService localizationService) {
         this.localizationService = localizationService;
     }
-    @ApiOperation(value = "Find all localizations", notes = "Provide information about all localizations", hidden = false)
+    @ApiOperation(value = "Find all localizations", notes = "Provide information about all localizations")
     @GetMapping
     public List<LocalizationDto> getAllLocals(){
         return localizationService.findAllLocalizations();
@@ -35,7 +36,7 @@ public class LocalizationController {
     }
 
     @PostMapping()
-    public LocalizationDto createLocal(@RequestBody LocalizationDto localizationDto){
+    public LocalizationDto createLocal(@RequestBody @Validated LocalizationDto localizationDto){
         return localizationService.saveLocalization(localizationDto);
     }
 

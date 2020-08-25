@@ -13,6 +13,7 @@ public class LocalizationConverter implements Function<LocalizationDto, Localiza
     public Localization apply(LocalizationDto localizationDto) {
         Localization localization = new Localization();
         localization.setId(localizationDto.getId());
+        localization.setDeviceId(localizationDto.getDeviceId());
         localization.setLatitude(localizationDto.getLatitude());
         localization.setLongitude(localizationDto.getLongitude());
         localization.setDateCreated(localizationDto.getDateCreated());

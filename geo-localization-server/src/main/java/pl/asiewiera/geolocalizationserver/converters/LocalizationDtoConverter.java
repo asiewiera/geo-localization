@@ -12,6 +12,6 @@ public class LocalizationDtoConverter implements Function<Localization, Localiza
     @Override
     public LocalizationDto apply(Localization localization) {
 
-        return new LocalizationDto(localization.getId(), localization.getLatitude(), localization.getLongitude(), localization.getDateCreated());
+        return new LocalizationDto(localization.getId(), localization.getDeviceId(), localization.getLatitude(), localization.getLongitude(), localization.getDateCreated());
     }
 }
